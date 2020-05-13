@@ -37,7 +37,11 @@ function verifyIfBodyParamsArePresent(request, response, next) {
   const { title, url, techs } = request.body;
 
   if (!title || !url || !techs || techs.length === 0) {
-    const message = `Missing information: ${!title ? 'title, ' : ''}${!url ? 'url, ' : ''}${!techs || techs.length === 0 ? 'techs' : ''}.`;
+    const message = 'Missing information:'
+      + `${!title ? 'title, ' : ''}`
+      + `${!url ? 'url, ' : ''}`
+      + `${!techs || techs.length === 0 ? 'techs' : ''}`
+      + '.';
 
     return response.status(400).json({ message });
   }
